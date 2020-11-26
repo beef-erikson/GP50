@@ -1,18 +1,17 @@
 --[[
+    Simple Pong clone
+    Lua Build for Love2d
+
     Pong-0
     "The Day-0 Update"
     Setting up initial state of game
 
     Author: Troy Martin
     beef.erikson.studios@gmail.com
-
-    Simple Pong clone
-    Lua Build for Love2d
 ]]
 
 WINDOW_WIDTH = 1280
 WINDOW_HEIGHT = 780
-DEBUG_MODE = true
 
 --[[
     Initialize beginning game state
