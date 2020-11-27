@@ -85,7 +85,11 @@ function love.load()
     player2 = Paddle(VIRTUAL_WIDTH - 15, VIRTUAL_HEIGHT - 30, 5, 20)
     ball = Ball(VIRTUAL_WIDTH / 2 - 2, VIRTUAL_HEIGHT / 2 - 2, 4, 4)
 
-    -- game state for switching between beginning, menus, main game, etc
+    -- starting game state, can be any of the following
+    --  'start'     The beginning of the game before a serve
+    --  'serve'     Displays whose turn it is
+    --  'play'      Ball is in play, bouncing between paddles
+    --  'done'      Game is over, player has won
     gameState = 'start'
 end
 
