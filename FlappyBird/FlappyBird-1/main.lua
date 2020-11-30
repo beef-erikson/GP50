@@ -2,9 +2,9 @@
     Flappy Bird Clone
     Lua Build for Love2d
 
-    FlappyBird-0
-    "The Day-0 Update"
-    Setting up initial state of game
+    FlappyBird-1
+    "The Parallax Update"
+    - Parallax scrolling added to background and floor
 
     Author: Troy Martin
     beef.erikson.studios@gmail.com
@@ -19,9 +19,18 @@ WINDOW_HEIGHT = 720
 VIRTUAL_WIDTH = 512
 VIRTUAL_HEIGHT = 288
 
--- graphics files
+-- speeds for parallax scrolling and looping point
+local BACKGROUND_SCROLL_SPEED = 30
+local GROUND_SCROLL_SPEED = 60
+local BACKGROUND_LOOPING_POINT = 413
+
+-- graphics files and parallax support
 local background = love.graphics.newImage('background.png')
+local backgrondScroll = 0
+
 local ground = love.graphics.newImage('ground.png')
+local groundScroll = 0
+
 
 
 --[[
@@ -48,6 +57,18 @@ function love.resize(w, h)
 end
 
 --[[
+    Update is called once per frame, used for logic
+]]
+function love.update(dt)
+    -- parallax scrolling
+    backgrondScroll = (backgrondScroll + BACKGROUND_SCROLL_SPEED * dt)
+        % BACKGROUND_LOOPING_POINT
+
+    groundScroll = (groundScroll + GROUND_SCROLL_SPEED * dt)
+        % VIRTUAL_WIDTH
+end
+
+--[[
     Keybindings
 
     escape - quit
@@ -69,8 +90,8 @@ function love.draw()
     push:start()
 
     -- draws background and ground
-    love.graphics.draw(background, 0, 0)
-    love.graphics.draw(ground, 0, VIRTUAL_HEIGHT - 16)
+    love.graphics.draw(background, -backgrondScroll, 0)
+    love.graphics.draw(ground, -groundScroll, VIRTUAL_HEIGHT - 16)
     -- stops push render
     push:finish()
 end
