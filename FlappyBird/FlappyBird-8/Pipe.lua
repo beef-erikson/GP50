@@ -13,6 +13,13 @@ Pipe = Class{}
 -- reference pipe image rather than load every insantiation
 local PIPE_IMAGE = love.graphics.newImage('pipe.png')
 
+-- pipe scrolling speed
+PIPE_SPEED = 60
+
+-- pipe width and height
+PIPE_HEIGHT = 288
+PIPE_WIDTH = 70
+
 --[[
     Initializing pipe with some default values
 ]]
